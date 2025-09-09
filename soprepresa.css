@@ -1,0 +1,202 @@
+body {
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(135deg, #ffe0e9, #ffc6d9, #ffb0c9);
+    background-size: 400% 400%;
+    animation: gradient 15s ease infinite;
+    font-family: 'Segoe UI', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    text-align: center;
+    overflow-x: hidden;
+}
+
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    50% {
+        background-position: 100% 50%;
+    }
+
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+h2 {
+    color: #ff2d7f;
+    margin: 40px 20px 30px;
+    font-size: 2.4em;
+    animation: fadeIn 1.5s ease-in-out;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+}
+
+.galeria {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+    padding: 20px;
+    width: 90%;
+    max-width: 1200px;
+}
+
+/* Responsive para tablets */
+@media (max-width: 992px) {
+    .galeria {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* Responsive para móviles */
+@media (max-width: 768px) {
+    .galeria {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    h2 {
+        font-size: 1.8em;
+    }
+}
+
+.imagen {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(255, 0, 100, 0.2);
+    transform: scale(0.8);
+    opacity: 0;
+    animation: aparecer 1s ease forwards, flotar 3s ease-in-out infinite;
+}
+
+.imagen img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.5s ease;
+}
+
+.imagen img:hover {
+    transform: scale(1.1);
+}
+
+@keyframes aparecer {
+    from {
+        transform: translateY(30px) scale(0.8);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0) scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes flotar {
+
+    0%,
+    100% {
+        transform: translateY(0) scale(1);
+    }
+
+    50% {
+        transform: translateY(-10px) scale(1.02);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Botón "Aún sigue" mejorado */
+.boton-sigue {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    background-color: #ff4b91;
+    color: white;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 30px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 5px 15px rgba(255, 75, 145, 0.4);
+    font-weight: bold;
+    z-index: 100;
+}
+
+.boton-sigue:hover {
+    background-color: #ff1f75;
+    transform: scale(1.05);
+    box-shadow: 0 7px 20px rgba(255, 31, 117, 0.5);
+}
+
+.boton-sigue:active {
+    transform: scale(0.98);
+}
+
+/* Corazones flotantes decorativos */
+.corazones {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.corazon-flotante {
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background: #ff69b4;
+    transform: rotate(-45deg);
+    opacity: 0.5;
+    animation: flotar-corazon 15s linear infinite;
+}
+
+.corazon-flotante:before,
+.corazon-flotante:after {
+    content: '';
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background: #ff69b4;
+    border-radius: 50%;
+}
+
+.corazon-flotante:before {
+    top: -7.5px;
+}
+
+.corazon-flotante:after {
+    left: 7.5px;
+}
+
+@keyframes flotar-corazon {
+    0% {
+        transform: translateY(100vh) rotate(-45deg);
+        opacity: 0.5;
+    }
+
+    100% {
+        transform: translateY(-100px) rotate(-45deg);
+        opacity: 0;
+    }
+}
